@@ -1,19 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 #include <math.h>
+#define tamanho 100
 
+void cubo1(float L, float *area, float *volume);
+
+void cubo1(float L, float *area, float *volume){
+    *area = 6 * pow(L, 2);
+    *volume = pow(L, 3);
+}
 
 int main()
 {
-    setlocale(LC_ALL, "portuguese");
-    float A, B, C;
+    int i = 0;
+    float L, area, volume;
+    while(i < tamanho){
+        printf("Dados do Cubo %i:\n", i + 1);
+        printf("Valor do Lado(L > 0): "); scanf("%f", &L);
+        if (L <= 0){
+            printf("ERRO: Lado invalido. Tente novamente.\n");
+        }
+        else{
+            printf("Dados de saida: ");
+            cubo1(L, &area, &volume);
+            printf("Area: %.1f metros quadrados.\n", area);
+            printf("Volume: %.1f metros cubicos.\n", volume);
+        }
+        i++;
+    }
 
-    printf("Informe o valor do cateto B:");
-    scanf("%.2f", &B);
-    printf("Informe o valor do cateto C:");
-    scanf("%.2f", &C);
-
-    printf("O Valor da hipotenusa A será %.1f", pow(pow(B,2) + pow(B,2)), 1.0/2 );
     return 0;
 }
